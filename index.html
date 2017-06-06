@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Animation Cascade</title>
+    <meta name="description" content="Animation Cascade Component Dev">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="./scripts/animation-cascade.js"></script>
+  </head>
+  <body>
+    <a-scene>
+
+      <!-- Master Cascade Entity L1-->
+      <a-entity id="master" cascade-animation-parent position="0 1 0">
+        <!-- Master Trigger -->
+        <a-entity id="master-cascade-trigger" position="0 1 -2" >
+          <a-box scale=".1 .1 .1"
+            rotation=""
+            position="0 0 0"
+            color="black">
+          </a-box>
+          <a-text value="Expand" color="white" anchor="center"></a-text>
+        </a-entity>
+
+        <!-- Group L2 -->
+        <a-entity>
+
+          <!-- Group L3 -->
+          <a-entity>
+
+            <a-box id="box-3-1" scale=".1 .1 .1"
+              rotation=""
+              position="0 0 0">
+              <a-animation attribute="position" begin="-cascade-start" direction="alternate" to="0 0 0"></a-animation>
+            </a-box>
+
+            <a-box id="box-3-2" scale=".1 .1 .1"
+              rotation=""
+              position="0 0 0">
+              <a-animation attribute="position" begin="-cascade-start" direction="alternate" to="0 0 0"></a-animation>
+            </a-box>
+
+            <a-box scale=".1 .1 .1"
+              rotation=""
+              position="0 0 0">
+              <a-animation attribute="position" begin="-cascade-start" direction="alternate" to="0 0 0"></a-animation>
+            </a-box>
+
+            <!-- Control Box L3  - do these need to be wrapped in entities? -->
+            <a-box scale=".1 .1 .1"
+              rotation=""
+              position="0 0 0">
+              <a-animation attribute="position" begin="-cascade-start" direction="alternate" to="0 0 0"></a-animation>
+            </a-box>
+
+          </a-entity>
+
+          <!-- Control Box - do these need to be wrapped in entities? -->
+          <a-box scale=".1 .1 .1"
+            rotation=""
+            position="0 0 0">
+          </a-box>
+
+        </a-entity>
+
+        <!-- Outer Control Box -->
+        <a-box scale=".1 .1 .1"
+          rotation=""
+          position="0 0 0">
+        </a-box>
+
+      </a-entity>
+
+      <a-plane position="0 0 -3" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <a-sky color="#a4a4a4"></a-sky>
+      <a-camera><a-cursor></a-cursor></a-camera>
+
+    </a-scene>
+  </body>
+</html>
