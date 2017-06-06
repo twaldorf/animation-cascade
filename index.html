@@ -28,16 +28,16 @@
           <!-- Group L3 -->
           <a-entity>
 
-            <a-box id="box-3-1" scale=".1 .1 .1"
+            <a-box id="box31" class="cascade-top" scale=".1 .1 .1"
               rotation=""
               position="0 0 0">
-              <a-animation attribute="position" begin="-cascade-start" direction="alternate" to="0 0 0"></a-animation>
+              <a-animation attribute="position" begin="box31-cascade-start" direction="alternate" to="0 2 0"></a-animation>
             </a-box>
 
-            <a-box id="box-3-2" scale=".1 .1 .1"
+            <a-box id="box32" scale=".1 .1 .1"
               rotation=""
               position="0 0 0">
-              <a-animation attribute="position" begin="-cascade-start" direction="alternate" to="0 0 0"></a-animation>
+              <a-animation attribute="position" begin="box32-cascade-start" direction="alternate" to="0 1 0"></a-animation>
             </a-box>
 
             <a-box scale=".1 .1 .1"
@@ -67,6 +67,47 @@
         <a-box scale=".1 .1 .1"
           rotation=""
           position="0 0 0">
+        </a-box>
+
+      </a-entity>
+
+      <a-entity id="item-3" cascade-animation-parent position="1 0 0">
+        <a-box id="item-3-cascade-trigger" scale=".1 .1 .1"
+          rotation=""
+          position="0 0 -0.5"
+          color="blue">
+        </a-box>
+
+        <a-entity id="box1" cascading>
+          <a-box id="" scale=".1 .1 .1"
+            rotation=""
+            position="0 0 0">
+          </a-box>
+          <a-box id="" scale=".1 .1 .1"
+            rotation=""
+            position="0 0 0">
+            <a-animation attribute="position" begin="box1-cascade-continue" direction="alternate" to="-.5 0 0"></a-animation>
+          </a-box>
+          <a-animation attribute="position" begin="box1-cascade-start" direction="alternate" to="0 2 0"></a-animation>
+        </a-entity>
+
+        <a-box id="box2" scale=".1 .1 .1"
+          rotation=""
+          position="0 0 0">
+          <a-animation attribute="position" begin="box2-cascade-start" direction="alternate" to="0 1 0"></a-animation>
+        </a-box>
+
+        <a-box scale=".1 .1 .1"
+          rotation=""
+          position="0 0 0">
+          <a-animation attribute="position" begin="-cascade-start" direction="alternate" to="0 0 0"></a-animation>
+        </a-box>
+
+        <!-- Control Box L3  - do these need to be wrapped in entities? -->
+        <a-box scale=".1 .1 .1"
+          rotation=""
+          position="0 0 0">
+          <a-animation attribute="position" begin="-cascade-start" direction="alternate" to="0 0 0"></a-animation>
         </a-box>
 
       </a-entity>

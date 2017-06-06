@@ -21,19 +21,57 @@ AFRAME.registerComponent('cascade-animation', {
   }
 });
 
+AFRAME.registerComponent('cascading', {
+  schema: {default: ''},
+  init() {
+    var el = this.el;
+    var children = Array.from(el.querySelectorAll('*'));
+    children.forEach(function(child) {
+
+      if (child.classList.contains('cascading') {
+        child.emit(child.id + '-cascade-continue');
+        console.log(child.id + '-cascade-continue');
+
+        child.addEventListener('animationend', function(){
+          child.emit(child.id + '-cascade-end');
+          console.log(child.id + '-cascade-end');
+        });
+
+      });
+
+    });
+  }
+});
+
 AFRAME.registerComponent('cascade-animation-parent', {
   schema: {default: ''},
   init() {
     var el = this.el;
     var children = Array.from(el.querySelectorAll('*'));
-    console.log(children);
+    console.log('Cascade children are' + children);
     var trigger = document.querySelector('#' + el.id + '-cascade-trigger');
-    console.log('trigger is #' + trigger.id);
+    console.log('Cascade trigger is #' + trigger.id);
+
     trigger.addEventListener('click', function() {
-      children.forEach(function() {
-        this.el.emit(this.el.id + '-cascade-start');
-        console.log(this.el.id + '-cascade-start');
+
+      children.forEach(function(child) {
+
+        if (child.classList.contains('cascader') {
+          child.emit(child.id + '-cascade-continue');
+          console.log(child.id + '-cascade-continue');
+        }) else {
+          child.emit(child.id + '-cascade-start');
+          console.log(child.id + '-cascade-start');
+        };
+
+        child.addEventListener('animationend', function(){
+          child.emit(child.id + '-cascade-end');
+          console.log(child.id + '-cascade-end');
+        });
+
       });
+
     });
+
   }
 });
