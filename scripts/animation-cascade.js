@@ -8,19 +8,6 @@ AFRAME.registerComponent('click-listener', {
   }
 });
 
-AFRAME.registerComponent('cascade-animation', {
-  schema: {default: ''},
-  init() {
-    var el = this.el;
-    // var parent = el.parentNode.id;
-    // console.log('parent of cascade-animation is #' + parent.id);
-    this.addEventListener('upstream-start', function() {
-      el.emit(el.id + 'cascade');
-      console.log(el.id + '-cascade it!');
-    });
-  }
-});
-
 AFRAME.registerComponent('cascading', {
   schema: {default: ''},
   init() {
@@ -73,5 +60,38 @@ AFRAME.registerComponent('cascade-animation-parent', {
 
     });
 
+  }
+});
+
+AFRAME.registerComponent('animation-chain-trigger', {
+  schema: {default: ''},
+  init() {
+    var trigger = this.el;
+    var link-top = document.querySelector('#' + hmmmmm);
+    trigger.addEventListener('click', function() {
+
+    }
+  }
+})
+
+AFRAME.registerComponent('animation-link', {
+  schema: {
+    default: '',
+    order: '',
+    pattern: ''},
+  init() {
+    var el = this.el;
+    var id = this.el.id;
+    var forward = true;
+    var nextlength = id.toString().length;
+    var next = document.querySelector(id[nextlength] + 1);
+    var prev = document.querySelector(id[nextlength] - 1);
+    el.addEventListener('animationend', function(){
+      if (forward == true) {
+        next.emit('begin');
+      } else {
+        prev.emit('begin');
+      }
+    });
   }
 });

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Animation Cascade</title>
     <meta name="description" content="Animation Cascade Component Dev">
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="./scripts/aframe.min.js"></script>
     <script src="./scripts/animation-cascade.js"></script>
   </head>
   <body>
@@ -28,13 +28,13 @@
           <!-- Group L3 -->
           <a-entity>
 
-            <a-box id="box31" class="cascade-top" scale=".1 .1 .1"
+            <a-box id="tier-1-1" class="cascade-top" scale=".1 .1 .1"
               rotation=""
               position="0 0 0">
               <a-animation attribute="position" begin="box31-cascade-start" direction="alternate" to="0 2 0"></a-animation>
             </a-box>
 
-            <a-box id="box32" scale=".1 .1 .1"
+            <a-box id="tier-1-2" scale=".1 .1 .1"
               rotation=""
               position="0 0 0">
               <a-animation attribute="position" begin="box32-cascade-start" direction="alternate" to="0 1 0"></a-animation>
