@@ -10,9 +10,7 @@
   <body>
     <a-scene>
 
-      <!-- Master Cascade Entity L1-->
-      <a-entity id="master" cascade-animation-parent position="0 1 0">
-        <!-- Master Trigger -->
+      <!-- <a-entity id="master" cascade-animation-parent position="0 1 0">
         <a-entity id="master-cascade-trigger" position="0 1 -2" >
           <a-box scale=".1 .1 .1"
             rotation=""
@@ -22,10 +20,8 @@
           <a-text value="Expand" color="white" anchor="center"></a-text>
         </a-entity>
 
-        <!-- Group L2 -->
         <a-entity>
 
-          <!-- Group L3 -->
           <a-entity>
 
             <a-box id="tier-1-1" class="cascade-top" scale=".1 .1 .1"
@@ -46,7 +42,6 @@
               <a-animation attribute="position" begin="-cascade-start" direction="alternate" to="0 0 0"></a-animation>
             </a-box>
 
-            <!-- Control Box L3  - do these need to be wrapped in entities? -->
             <a-box scale=".1 .1 .1"
               rotation=""
               position="0 0 0">
@@ -55,7 +50,6 @@
 
           </a-entity>
 
-          <!-- Control Box - do these need to be wrapped in entities? -->
           <a-box scale=".1 .1 .1"
             rotation=""
             position="0 0 0">
@@ -63,15 +57,14 @@
 
         </a-entity>
 
-        <!-- Outer Control Box -->
         <a-box scale=".1 .1 .1"
           rotation=""
           position="0 0 0">
         </a-box>
 
-      </a-entity>
+      </a-entity> -->
 
-      <a-entity id="item-3" cascade-animation-parent position="1 0 0">
+      <!-- <a-entity id="item-3" cascade-animation-parent position="1 0 0">
         <a-box id="item-3-cascade-trigger" scale=".1 .1 .1"
           rotation=""
           position="0 0 -0.5"
@@ -103,13 +96,28 @@
           <a-animation attribute="position" begin="-cascade-start" direction="alternate" to="0 0 0"></a-animation>
         </a-box>
 
-        <!-- Control Box L3  - do these need to be wrapped in entities? -->
         <a-box scale=".1 .1 .1"
           rotation=""
           position="0 0 0">
           <a-animation attribute="position" begin="-cascade-start" direction="alternate" to="0 0 0"></a-animation>
         </a-box>
 
+      </a-entity> -->
+
+      <a-entity>
+        <a-box id="chain-1" animation-chain-trigger
+          scale=".5 .5 .5"
+          position="0 1 0"></a-box>
+        <a-box id="chain-1-link-1" animation-link scale=".1 .1 .1"
+          rotation=""
+          position="0 0 0">
+          <a-animation attribute="position" begin="begin" direction="alternate" to="1 0 0"></a-animation>
+        </a-box>
+        <a-box id="1-link-2" animation-link scale=".1 .1 .1"
+          rotation=""
+          position="0 0 0">
+          <a-animation attribute="position" begin="begin" direction="alternate" to="2 0 0"></a-animation>
+        </a-box>
       </a-entity>
 
       <a-plane position="0 0 -3" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>

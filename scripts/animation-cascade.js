@@ -15,7 +15,7 @@ AFRAME.registerComponent('cascading', {
     var children = Array.from(el.querySelectorAll('*'));
     children.forEach(function(child) {
 
-      if (child.classList.contains('cascading') {
+      if (child.classList.contains('cascading')) {
         child.emit(child.id + '-cascade-continue');
         console.log(child.id + '-cascade-continue');
 
@@ -24,7 +24,7 @@ AFRAME.registerComponent('cascading', {
           console.log(child.id + '-cascade-end');
         });
 
-      });
+      };
 
     });
   }
@@ -43,10 +43,10 @@ AFRAME.registerComponent('cascade-animation-parent', {
 
       children.forEach(function(child) {
 
-        if (child.classList.contains('cascader') {
+        if (child.classList.contains('cascader')) {
           child.emit(child.id + '-cascade-continue');
           console.log(child.id + '-cascade-continue');
-        }) else {
+        } else {
           child.emit(child.id + '-cascade-start');
           console.log(child.id + '-cascade-start');
         };
@@ -67,12 +67,13 @@ AFRAME.registerComponent('animation-chain-trigger', {
   schema: {default: ''},
   init() {
     var trigger = this.el;
-    var link-top = document.querySelector('#' + hmmmmm);
+    var link = document.querySelector('#' + trigger.id + '-link-1');
     trigger.addEventListener('click', function() {
-
-    }
+      link.emit('begin');
+      console.log('Chain trigger');
+    });
   }
-})
+});
 
 AFRAME.registerComponent('animation-link', {
   schema: {
@@ -83,9 +84,9 @@ AFRAME.registerComponent('animation-link', {
     var el = this.el;
     var id = this.el.id;
     var forward = true;
-    var nextlength = id.toString().length;
-    var next = document.querySelector(id[nextlength] + 1);
-    var prev = document.querySelector(id[nextlength] - 1);
+    var endex = id.toString().length - 1;
+    var next = document.querySelector(id.toString.slice(0, [endex]) + id.charAt([length]) ;
+    var prev = document.querySelector(id[length] - 1);
     el.addEventListener('animationend', function(){
       if (forward == true) {
         next.emit('begin');
