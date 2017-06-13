@@ -10,6 +10,22 @@
   <body>
     <a-scene>
 
+      <a-entity>
+        <a-box id="chain-1" animation-chain-trigger
+          scale=".5 .5 .5"
+          position="0 1 0"></a-box>
+        <a-box id="chain-1-link-1" animation-link scale=".1 .1 .1"
+          rotation=""
+          position="0 0 0">
+          <a-animation attribute="position" begin="begin" direction="alternate" to="1 0 0"></a-animation>
+        </a-box>
+        <a-box id="chain-1-link-2" animation-link scale=".1 .1 .1"
+          rotation=""
+          position="0 0 0">
+          <a-animation attribute="position" begin="begin" direction="alternate" to="2 0 0"></a-animation>
+        </a-box>
+      </a-entity>
+
       <!-- <a-entity id="master" cascade-animation-parent position="0 1 0">
         <a-entity id="master-cascade-trigger" position="0 1 -2" >
           <a-box scale=".1 .1 .1"
@@ -103,22 +119,6 @@
         </a-box>
 
       </a-entity> -->
-
-      <a-entity>
-        <a-box id="chain-1" animation-chain-trigger
-          scale=".5 .5 .5"
-          position="0 1 0"></a-box>
-        <a-box id="chain-1-link-1" animation-link scale=".1 .1 .1"
-          rotation=""
-          position="0 0 0">
-          <a-animation attribute="position" begin="begin" direction="alternate" to="1 0 0"></a-animation>
-        </a-box>
-        <a-box id="1-link-2" animation-link scale=".1 .1 .1"
-          rotation=""
-          position="0 0 0">
-          <a-animation attribute="position" begin="begin" direction="alternate" to="2 0 0"></a-animation>
-        </a-box>
-      </a-entity>
 
       <a-plane position="0 0 -3" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       <a-sky color="#a4a4a4"></a-sky>

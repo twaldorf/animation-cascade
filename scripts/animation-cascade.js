@@ -79,20 +79,52 @@ AFRAME.registerComponent('animation-link', {
   schema: {
     default: '',
     order: '',
-    pattern: ''},
+    cycles: ''},
   init() {
     var el = this.el;
     var id = this.el.id;
+    var count = 0;
+    var cycles = 2; //change this to access element cycles property
     var forward = true;
-    var endex = id.toString().length - 1;
-    var next = document.querySelector(id.toString.slice(0, [endex]) + id.charAt([length]) ;
-    var prev = document.querySelector(id[length] - 1);
+    var chainsize = el.parentElement.childElementCount - 1;
+    console.log('There are ' + chainsize + ' elements in my chain container (not including our trigger).');
+    var endex = id.length - 1;
+    var linknum = parseInt(id[endex], 10);
+    console.log('I am ' + id + ' and my link number is ' + linknum);
+    console.log('The next element could be #' + id.slice(0, [endex]) + id.charAt([id.length]) + (linknum + 1));
+    var next = document.querySelector('#' + id.slice(0, [endex]) + id.charAt([id.length]) + (linknum + 1));
+    console.log('The previous element could be #' + id.slice(0, [endex]) + id.charAt([id.length]) + (linknum + -1));
+    var prev = document.querySelector('#' + id.slice(0, [endex]) + id.charAt([id.length]) + (linknum + -1));
     el.addEventListener('animationend', function(){
-      if (forward == true) {
+      if (next == null) {count ++;};
+      if (forward == false && prev == null) {
+        count++;
+        console.log('End counted to ' + count);
+      };
+      if (prev == null && count < cycles) {
+        forward = true;
+        console.log('Go forward!');
+      };
+      if (next == null && count < cycles) {
+        forward = false;
+        console.log('Go backward!');
+        count ++;
+        console.log('Counted to ' + count);
+      };
+      if (forward == true && count < cycles) {
         next.emit('begin');
-      } else {
-        prev.emit('begin');
       }
+      if (forward == false && count < cycles) {
+        if (chainsize == linknum) {
+          el.emit('begin');
+          el.addEventListener('animationend', function() {
+            prev.emit('begin');
+          });
+        };
+      };
+      if (forward == false && count < cycles && prev != null) {
+        prev.emit('begin');
+      };
     });
   }
 });
